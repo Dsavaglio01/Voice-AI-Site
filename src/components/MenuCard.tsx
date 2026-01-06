@@ -15,18 +15,16 @@ function MenuCard({item}: MenuItem) {
         <div className='relative h-48 overflow-hidden bg-gray-200'>
            <img src={item.pic} alt={item.name} className='w-full h-full object-cover'/>
         </div>
-        <div className='m-5'>
+        <div className='m-5 mt-10 mb-0'>
             <div className='flex justify-between items-start'>
                 <span className='text-lg'>{item.name}</span>
                 <span className='text-blue-600'>${item.base_price.toFixed(2)}</span>
             </div>
             <div className='my-5'>
                 <p className='text-sm text-gray-600'>{item.description}</p>
-            </div>
-            <div>
-                <button className='w-full'>
-
-                </button>
+                <div className='mt-2 border rounded-lg inline-block border-gray-300'>
+                    <span className='text-sm px-3 py-5'>{item.type.charAt(0).toUpperCase() + item.type.slice(1)}</span>
+                </div>
             </div>
         </div>
         

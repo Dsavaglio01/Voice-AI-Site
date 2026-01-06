@@ -61,6 +61,28 @@ const rules = {
       },
       {
         "id": "3",
+        "name": "Double Cheeseburger Combo",
+        "base_price": 7.50,
+        "pic": "https://images.pexels.com/photos/11462923/pexels-photo-11462923.jpeg",
+        "description": "Two beef patties, cheese, lettuce, tomato, pickles, onions, ketchup with fries and soft drink",
+        "sizes": {
+          "medium": 0.50,
+          "large": 1.25
+        },
+        "modifiers": {
+          "cheese": { "extra": 1.00 },
+          "bacon": { "add": 1.50 },
+          "lettuce": { "extra": 0.25, "none": 0.00 },
+          "tomato": { "extra": 0.25, "none": 0.00 }
+        },
+        "meal_upgrade": {
+          "price": 3.00,
+          "drinks": ["coke", "sprite", "water", "fanta", "diet coke"]
+        },
+        "type": "combo"
+      },
+      {
+        "id": "4",
         "name": "Chicken Sandwich",
         "base_price": 4.25,
         "pic": "https://images.pexels.com/photos/35438304/pexels-photo-35438304.jpeg",
@@ -82,6 +104,27 @@ const rules = {
       },
       {
         "id": "4",
+        "name": "Chicken Sandwich Combo",
+        "base_price": 6.25,
+        "pic": "https://images.pexels.com/photos/8769141/pexels-photo-8769141.jpeg",
+        "description": "Breaded chicken breast, mayo, pickles, lettuce on a brioche bun with fries and soft drink",
+        "sizes": {
+          "regular": 0.00,
+          "spicy": 0.50
+        },
+        "modifiers": {
+          "mayo": { "none": 0.00 },
+          "lettuce": { "extra": 0.25, "none": 0.00 },
+          "pickles": { "extra": 0.25, "none": 0.00 }
+        },
+        "meal_upgrade": {
+          "price": 2.75,
+          "drinks": ["coke", "sprite", "water", "fanta", "iced tea"]
+        },
+        "type": "combo"
+      },
+      {
+        "id": "6",
         "name": "Chicken Nuggets",
         "base_price": 3.50,
         "pic": "https://images.pexels.com/photos/18188572/pexels-photo-18188572.jpeg",
@@ -97,7 +140,7 @@ const rules = {
         "type": "main"
       },
       {
-        "id": "5",
+        "id": "7",
         "name": "French Fries",
         "base_price": 2.00,
         "pic": "https://images.pexels.com/photos/115740/pexels-photo-115740.jpeg",
@@ -112,6 +155,19 @@ const rules = {
           "chili": { "add": 1.25 }
         },
         "type": "side"
+      },
+      {
+        "id": "8",
+        "name": "Soft Drink",
+        "base_price": 1.99,
+        "pic": "https://images.pexels.com/photos/2983100/pexels-photo-2983100.jpeg",
+        "description": "Choice of Coke, Sprite, or Fanta (Small/Medium/Large)",
+        "sizes": {
+          "small": 0.00,
+          "medium": 0.75,
+          "large": 1.25
+        },
+        "type": "drink"
       }
     ]
   }
@@ -144,7 +200,7 @@ function Menu() {
               </button>
             ))} 
           </div>
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'> 
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mx-10'> 
             {rules.menu.items.map((e) => (
               <MenuCard item={e}/>
             ))}
