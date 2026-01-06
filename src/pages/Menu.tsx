@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Header } from './sections/Header';
 import { useRouter } from 'next/router';
+import MenuCard from '@/components/MenuCard';
 interface Menu {
     name: String,
     id: String,
@@ -18,6 +19,7 @@ const rules = {
         "name": "Cheeseburger",
         "base_price": 4.00,
         "pic": "https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg",
+        "description": "Beef patty, cheese, lettuce, tomato, pickles, onions, ketchup",
         "sizes": {
           "small": 0.00,
           "medium": 0.50,
@@ -40,6 +42,7 @@ const rules = {
         "name": "Double Cheeseburger",
         "base_price": 5.50,
         "pic": "https://images.pexels.com/photos/2089717/pexels-photo-2089717.jpeg",
+        "description": "Two beef patties, cheese, lettuce, tomato, pickles, onions, ketchup",
         "sizes": {
           "medium": 0.50,
           "large": 1.25
@@ -61,6 +64,7 @@ const rules = {
         "name": "Chicken Sandwich",
         "base_price": 4.25,
         "pic": "https://images.pexels.com/photos/35438304/pexels-photo-35438304.jpeg",
+        "description": "Breaded chicken breast, mayo, pickles, lettuce on a brioche bun",
         "sizes": {
           "regular": 0.00,
           "spicy": 0.50
@@ -81,6 +85,7 @@ const rules = {
         "name": "Chicken Nuggets",
         "base_price": 3.50,
         "pic": "https://images.pexels.com/photos/18188572/pexels-photo-18188572.jpeg",
+        "description": "Crispy golden chicken nuggets with your choice of sauce",
         "sizes": {
           "6pc": 0.00,
           "10pc": 2.00,
@@ -96,6 +101,7 @@ const rules = {
         "name": "French Fries",
         "base_price": 2.00,
         "pic": "https://images.pexels.com/photos/115740/pexels-photo-115740.jpeg",
+        "description": "Crispy golden fries, lightly salted",
         "sizes": {
           "small": 0.00,
           "medium": 0.75,
@@ -106,28 +112,6 @@ const rules = {
           "chili": { "add": 1.25 }
         },
         "type": "side"
-      },
-      {
-        "id": "6",
-        "name": "Onion Rings",
-        "base_price": 2.50,
-        "pic": "https://images.pexels.com/photos/263049/pexels-photo-263049.jpeg",
-        "sizes": {
-          "small": 0.00,
-          "large": 1.00
-        },
-        "type": "side"
-      },
-      {
-        "id": "7",
-        "name": "Salad",
-        "base_price": 3.75,
-        "pic": "https://images.pexels.com/photos/257816/pexels-photo-257816.jpeg",
-        "modifiers": {
-          "dressing": { "ranch": 0.25, "italian": 0.25, "caesar": 0.25, "none": 0.00 },
-          "chicken": { "add": 2.00 }
-        },
-        "type": "main"
       }
     ]
   }
@@ -136,12 +120,13 @@ const categories = ["All", "Combos", "Main", "Sides", "Drinks"]
 function Menu() {
   const router = useRouter();
     const [ruleMenu, setRuleMenu] = useState<Menu[]>([]);
+    const [currentCategory, setCurrentCategory] = useState("All");
     useEffect(() => {
         rules.menu.items.map((e): Menu => {
             setRuleMenu(prevValue => [...prevValue, e])
         })
     }, [])
-
+    //{`${currentPage === 'menu' ? "text-blue-600": "text-gray-600"} navButton hover:text-gray-900`}
   return (
     <>
       <Header currentPage={"menu"} router={router}/>
@@ -153,12 +138,17 @@ function Menu() {
           </div>
           <div className='flex flex-wrap gap-2 justify-center mb-8'>
             {categories.map((e) => (
-              <button key={e}>
+              <button onClick={() => setCurrentCategory(e)}
+              className={`${currentCategory === e ? 'categoryButton text-white bg-black' : 'categoryButton'}`} key={e}>
                 {e}
               </button>
             ))} 
           </div>
-          
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'> 
+            {rules.menu.items.map((e) => (
+              <MenuCard item={e}/>
+            ))}
+          </div>
         </div>
       </div>
     </>
