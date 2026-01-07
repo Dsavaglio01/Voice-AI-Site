@@ -172,11 +172,11 @@ const rules = {
     ]
   }
 }
-const categories = ["All", "Combos", "Main", "Sides", "Drinks"]
+const categories = [{key: "all", name: "All"}, {key: "combo", name: "Combos"}, {key: "main", name: "Main"}, {key: "side", name: "Sides"}, {key: "drink", name: "Drinks"}]
 function Menu() {
   const router = useRouter();
     const [ruleMenu, setRuleMenu] = useState<Menu[]>([]);
-    const [currentCategory, setCurrentCategory] = useState("All");
+    const [currentCategory, setCurrentCategory] = useState({key: "all", name: "All"});
     useEffect(() => {
         rules.menu.items.map((e): Menu => {
             setRuleMenu(prevValue => [...prevValue, e])
@@ -195,13 +195,16 @@ function Menu() {
           <div className='flex flex-wrap gap-2 justify-center mb-8'>
             {categories.map((e) => (
               <button onClick={() => setCurrentCategory(e)}
-              className={`${currentCategory === e ? 'categoryButton text-white bg-black' : 'categoryButton'}`} key={e}>
-                {e}
+              className={`${currentCategory.name === e.name ? 'categoryButton text-white bg-black' : 'categoryButton'}`} key={e.key}>
+                {e.name}
               </button>
             ))} 
           </div>
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mx-10'> 
-            {rules.menu.items.map((e) => (
+            {currentCategory.name === 'All' ? rules.menu.items.map((e) => (
+              <MenuCard item={e}/>
+            )) :
+            rules.menu.items.filter((f) => f.type === currentCategory.key).map((e) => (
               <MenuCard item={e}/>
             ))}
           </div>

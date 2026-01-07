@@ -1,15 +1,19 @@
 import React from 'react'
+interface MenuCardProps {
+    item: MenuItem
+}
 interface MenuItem {
-    name: String,
+    name: string,
     id: String,
-    pic: String,
+    description: String,
+    pic: string,
     base_price: Number,
     sizes: Object,
     modifiers: Object,
     meal_upgrade: Object | undefined,
     type: String
 }
-function MenuCard({item}: MenuItem) {
+function MenuCard({item}: MenuCardProps) {
   return (
     <div className='overflow-hidden hover:shadow-2xl transition-shadow rounded-xl border border-gray-300'>
         <div className='relative h-48 overflow-hidden bg-gray-200'>

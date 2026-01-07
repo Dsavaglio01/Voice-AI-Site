@@ -2,7 +2,8 @@ import React, {useState} from 'react'
 import { Header } from './sections/Header'
 import { useRouter } from 'next/router'
 import { CiShoppingCart } from "react-icons/ci";
-const categories = ["All", "Combos", "Main", "Sides", "Drinks"]
+import DemoMenuCard from '@/components/DemoMenuCard';
+const categories = [{key: "all", name: "All"}, {key: "combo", name: "Combos"}, {key: "main", name: "Main"}, {key: "side", name: "Sides"}, {key: "drink", name: "Drinks"}]
 interface Menu {
     name: String,
     id: String,
@@ -176,7 +177,7 @@ const rules = {
 function Demo() {
     const router = useRouter();
     
-    const [currentCategory, setCurrentCategory] = useState("All");
+    const [currentCategory, setCurrentCategory] = useState({key: "all", name: "All"});
     const [orderedItems, setOrderedItems] = useState([]);
   return (
     <>
@@ -216,29 +217,18 @@ function Demo() {
                 <div>
                   <div className='flex flex-wrap gap-2 mb-4 pl-5'>
                     {categories.map((e) => (
-                      <button key={e} className={`${currentCategory === e ? 'categoryButton text-white bg-black' : 'categoryButton'}`}>
-                        {e}
+                      <button key={e.key} onClick={() => setCurrentCategory(e)}
+                      className={`${currentCategory.name === e.name ? 'categoryButton text-white bg-black' : 'categoryButton'}`}>
+                        {e.name}
                       </button>
                     ))}
                   </div>
                   <div className='space-y-4 max-h-[700px] overflow-y-auto pr-2 m-5'>
-                    {rules.menu.items.map((e) => (
-                      <div key={e.id} className='overflow-hidden border border-gray-300 rounded-lg mb-5'>
-                        <div className='flex gap-3 p-3'>
-                          <div className='relative w-20 h-20 rounded-lg overflow-hidden bg-gray-200'>
-                            <img src={e.pic} alt={e.name} className='w-full h-full object-cover'/>
-                          </div>
-                          <div className='flex-1 min-w-0'>
-                            <div className='flex justify-between items-start mb-1 mt-1.5'>
-                              <h4 className='font-medium text-sm'>{e.name}</h4>
-                              <span className='text-blue-600 font-medium text-sm ml-2'>
-                                ${e.base_price.toFixed(2)}
-                              </span>
-                            </div>
-                            <p className='text-xs text-gray-600 mb-2 line-clamp-2'>{e.description}</p>
-                          </div>
-                        </div>
-                      </div>
+                    {currentCategory.name == 'All' ? rules.menu.items.map((e) => (
+                      <DemoMenuCard e={e}/>
+                    )) :
+                    rules.menu.items.filter((f) => f.type === currentCategory.key).map((e) => (
+                      <DemoMenuCard e={e} />
                     ))}
                   </div>
                 </div>
