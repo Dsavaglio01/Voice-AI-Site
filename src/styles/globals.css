@@ -56,5 +56,6 @@ body {
   padding-right: 14px;
   border-width: 1px;
   border-color:lightgrey;
-  border-radius: 8px;
+  border-radius: 0.5rem;
+  font-size: 14px;
 }

@@ -1,0 +1,139 @@
+{
+  "menu": {
+    "items": [
+      {
+        "id": "burger_001",
+        "name": "Cheeseburger",
+        "base_price": 4.00,
+        "sizes": {
+          "small": 0.00,
+          "medium": 0.50,
+          "large": 1.00
+        },
+        "modifiers": {
+          "cheese": { "extra": 0.75, "none": 0.00 },
+          "pickles": { "extra": 0.25, "none": 0.00 },
+          "onions": { "extra": 0.25, "none": 0.00 },
+          "ketchup": { "none": 0.00 }
+        },
+        "meal_upgrade": {
+          "price": 2.50,
+          "drinks": ["coke", "sprite", "water", "fanta", "diet coke"]
+        }
+      },
+      {
+        "id": "burger_002",
+        "name": "Double Cheeseburger",
+        "base_price": 5.50,
+        "sizes": {
+          "medium": 0.50,
+          "large": 1.25
+        },
+        "modifiers": {
+          "cheese": { "extra": 1.00 },
+          "bacon": { "add": 1.50 },
+          "lettuce": { "extra": 0.25, "none": 0.00 },
+          "tomato": { "extra": 0.25, "none": 0.00 }
+        },
+        "meal_upgrade": {
+          "price": 3.00,
+          "drinks": ["coke", "sprite", "water", "fanta", "diet coke"]
+        }
+      },
+      {
+        "id": "burger_003",
+        "name": "Chicken Sandwich",
+        "base_price": 4.25,
+        "sizes": {
+          "regular": 0.00,
+          "spicy": 0.50
+        },
+        "modifiers": {
+          "mayo": { "none": 0.00 },
+          "lettuce": { "extra": 0.25, "none": 0.00 },
+          "pickles": { "extra": 0.25, "none": 0.00 }
+        },
+        "meal_upgrade": {
+          "price": 2.75,
+          "drinks": ["coke", "sprite", "water", "fanta", "iced tea"]
+        }
+      },
+      {
+        "id": "nuggets_001",
+        "name": "Chicken Nuggets",
+        "base_price": 3.50,
+        "sizes": {
+          "6pc": 0.00,
+          "10pc": 2.00,
+          "20pc": 5.00
+        },
+        "modifiers": {
+          "sauces": { "bbq": 0.25, "ranch": 0.25, "honey mustard": 0.25, "buffalo": 0.25 }
+        }
+      },
+      {
+        "id": "side_001",
+        "name": "French Fries",
+        "base_price": 2.00,
+        "sizes": {
+          "small": 0.00,
+          "medium": 0.75,
+          "large": 1.25
+        },
+        "modifiers": {
+          "cheese": { "add": 1.00 },
+          "chili": { "add": 1.25 }
+        }
+      },
+      {
+        "id": "side_002",
+        "name": "Onion Rings",
+        "base_price": 2.50,
+        "sizes": {
+          "small": 0.00,
+          "large": 1.00
+        }
+      },
+      {
+        "id": "side_003",
+        "name": "Salad",
+        "base_price": 3.75,
+        "modifiers": {
+          "dressing": { "ranch": 0.25, "italian": 0.25, "caesar": 0.25, "none": 0.00 },
+          "chicken": { "add": 2.00 }
+        }
+      },
+      {
+        "id": "drink_001",
+        "name": "Soft Drink",
+        "base_price": 1.50,
+        "sizes": {
+          "small": 0.00,
+          "medium": 0.50,
+          "large": 1.00
+        },
+        "options": ["coke", "sprite", "fanta", "diet coke", "dr pepper"]
+      },
+      {
+        "id": "drink_002",
+        "name": "Iced Tea",
+        "base_price": 1.75,
+        "sizes": {
+          "small": 0.00,
+          "medium": 0.50,
+          "large": 1.00
+        },
+        "options": ["sweet", "unsweetened", "peach", "lemon"]
+      },
+      {
+        "id": "dessert_001",
+        "name": "Ice Cream Sundae",
+        "base_price": 2.75,
+        "modifiers": {
+          "toppings": { "chocolate": 0.50, "strawberry": 0.50, "caramel": 0.50, "sprinkles": 0.25 },
+          "whipped cream": { "add": 0.25 }
+        }
+      }
+    ]
+  }
+}

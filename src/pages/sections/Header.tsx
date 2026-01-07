@@ -15,7 +15,7 @@ export const Header = ({currentPage, router}: HeaderProps) => {
                         </button>
                     </nav>
                     <nav className="hidden md:flex items-center gap-6">
-                        <button className="navButton">
+                        <button className={`${currentPage === 'demo' ? "text-blue-600": "text-gray-600"} navButton hover:text-gray-900`} onClick={() => router.push('/Demo')}>
                             Try Demo
                         </button>
                     </nav>
