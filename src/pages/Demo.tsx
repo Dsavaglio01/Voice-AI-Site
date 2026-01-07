@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Header } from './sections/Header'
 import { useRouter } from 'next/router'
-
+import { CiShoppingCart } from "react-icons/ci";
 const categories = ["All", "Combos", "Main", "Sides", "Drinks"]
 interface Menu {
     name: String,
@@ -177,6 +177,7 @@ function Demo() {
     const router = useRouter();
     
     const [currentCategory, setCurrentCategory] = useState("All");
+    const [orderedItems, setOrderedItems] = useState([]);
   return (
     <>
       <Header currentPage={"demo"} router={router}/>
@@ -208,7 +209,7 @@ function Demo() {
               </div>
             </div>
             <div className='lg:col-span-1'>
-              <div className='shadow-2xl mb-6'>
+              <div className='shadow-2xl mb-6 rounded-b-xl'>
                 <div className='p-5'>
                   <span>Menu</span>
                 </div>
@@ -240,6 +241,39 @@ function Demo() {
                       </div>
                     ))}
                   </div>
+                </div>
+              </div>
+            </div>
+            <div className='lg:col-span-1'>
+              <div className='sticky top-20 shadow-2xl rounded-b-xl'>
+                <div className='bg-gray-900 text-white'>
+                  <div className='flex items-center justify-between text-lg pt-5 pl-5 pb-1.5'>
+                    <span className='flex items-center gap-2'>
+                      <CiShoppingCart className='h-5 w-5'/>
+                      Your Order
+                    </span>
+                    {orderedItems.length > 0 && (
+                      <button>
+                        Clear
+                      </button>
+                    )}
+                  </div>
+                </div>
+                <div className='p-4'>
+                    {orderedItems.length === 0 ?
+                    (
+                      <div className='text-center py-12'>
+                        <CiShoppingCart className='h-12 w-12 text-gray-300 mx-auto mb-3'/>
+                        <p className='text-gray-500 text-sm'>Your cart is empty</p>
+                        <p className='text-gray-400 text-xs mt-1'>Add items from the menu</p>
+                      </div>
+                    ) : (
+                      <>
+                        <div>
+
+                        </div>
+                      </>
+                    )}
                 </div>
               </div>
             </div>
